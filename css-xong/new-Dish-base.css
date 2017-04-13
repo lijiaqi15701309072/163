@@ -1,0 +1,265 @@
+
+body, html, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, header, menu, section, p, input, td, th, ins {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+body, textarea, select, input, button {
+    font-size: 12px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section, header, main, article, aside, ins {
+    display: block;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+}
+
+html, body, img, iframe {
+    border: 0;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+input:focus, textarea:focus, span:focus, a:focus, button:focus {
+    outline: none;
+}
+
+li, s {
+    list-style: none;
+}
+
+img, .txt {
+    border: 0;
+}
+
+mark {
+    background: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+a, a *, .f-hand, .f-hand * {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+
+
+
+
+
+/*header部分开始*/
+.header {
+    height: 70px;
+    width: 100%;
+    background: url("../images-xong/topbar.png") repeat-x left -80px;
+}
+.warp {
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/*logo部分*/
+.logo {
+    float: left;
+    width: 176px;
+}
+.logo a {
+    float: left;
+    width: 157px;
+    height: 33px;
+    padding: 22px 20px 0 0;
+    background: url("../images-xong/topbar.png") no-repeat 0 15px;
+    text-indent: -9999px;
+}
+
+/*主导航部分*/
+.mian-nav {
+    float: left;
+    height: 70px;
+    margin-right: 120px;
+}
+.mian-nav li {
+    float: left;
+    font-size: 14px;
+    position: relative;
+
+}
+.mian-nav li:hover {
+    background: url("../images-xong/topbar.png") no-repeat left -155px;
+}
+.mian-nav li:hover > a {
+    background: none;
+}
+.mian-nav a {
+    display: block;
+    color: #cccccc;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 20px;
+    background: url("../images-xong/topbar.png") no-repeat right -300px;
+}
+.mian-nav .last {
+    background: none;
+}
+
+/*下载客户端*/
+.last-li {
+    display: block;
+    position: relative;
+}
+.hot {
+    width: 26px;
+    height: 19px;
+    background: url("../images-xong/topbar.png") no-repeat -190px 0;
+    position: absolute;
+    left: 90px;
+    top: 20px;
+}
+
+/*搜索框*/
+.search {
+    width: 210px;
+    height: 30px;
+    background: url("../images-xong/topbar.png") no-repeat 0 -550px;
+    position: absolute;
+    left: 800px;
+    top: 17px;
+}
+.search input {
+    height: 30px;
+    width: 160px;
+    margin-left: 30px;
+    border: none;
+    background: none;
+}
+
+/*右侧登录*/
+.login {
+    width: 85px;
+    height: 70px;
+    position: absolute;
+    left: 1010px;
+    top: -1px;
+    cursor: pointer;
+}
+.login i {
+    color: #787878;
+    padding-left: 20px;
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+}
+.login em {
+    width: 12px;
+    height: 7px;
+    background: url("../images-xong/topbar.png") no-repeat right -380px;
+    position: absolute;
+    left: 55px;
+    top: 30px;
+}
+
+/*下一个导航*/
+.next-nav {
+    height: 35px;
+    padding-left: 310px;
+    background: url("../images-xong/topbar.png") repeat-x left -230px;
+}
+.next-nav li {
+    float: left;
+    height: 22px;
+    margin: 0 20px;
+}
+.next-nav a {
+    height: 22px;
+    display: block;
+    padding-left: 12px;
+    margin-top: 7px;
+}
+.next-nav span {
+    height: 22px;
+    display: block;
+    color: #ffffff;
+    line-height: 22px;
+    padding-right: 12px;
+}
+.next-nav a:hover {
+    background: url("../images-xong/topbar.png") no-repeat left -275px;
+}
+.next-nav a:hover > span {
+    background: url("../images-xong/topbar.png") no-repeat right -275px;
+}
+/*header部分开始*/
+
+
+
+
+/*footer部分开始*/
+.footer {
+    height: 122px;
+    border-top: 1px solid #D5D5D5;
+    background: #F9F9F9;
+}
+.footer-next {
+    width: 983px;
+    height: 122px;
+    margin: 0 auto;
+}
+.footer-next img {
+    float: left;
+}
+/*footer部分结束*/

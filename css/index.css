@@ -1,0 +1,461 @@
+.login-logo {
+    width: 132px;
+    height: 150px;
+    background: #2B2B2B;
+    position: absolute;
+    left: 1120px;
+    top: 70px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+.login-logo li {
+    height: 30px;
+    border-radius: 5px;
+}
+
+.login-logo li:hover {
+    background: rgba(204, 204, 204, 0.6);
+}
+
+.login-logo a {
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+}
+
+.login-phone {
+    width: 520px;
+    height: 300px;
+    border: 1px solid #8B8B8B;
+    z-index: 1 !important;
+    background: #fff;
+    position: absolute;
+    left: 330px;
+    top: 160px;
+    border-radius: 3px 3px 0 0;
+}
+
+.login-phone-title {
+    height: 40px;
+    background: #2D2D2D;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+}
+
+.login-phone-title img {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.login-phone-item span {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #ccc;
+}
+.login-phone-title p {
+    font: 18px/40px "SimSun";
+    color: #ffffff;
+    margin-left: 15px;
+}
+
+.login-phone-item {
+    height: 220px;
+}
+
+.txt1 {
+    margin-top: 30px;
+    margin-left: 155px;
+    width: 212px;
+    height: 30px;
+    padding-left: 8px;
+    border: none;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
+.txt2 {
+    margin-top: 10px;
+    margin-left: 155px;
+    width: 212px;
+    height: 30px;
+    padding-left: 8px;
+    border: none;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+}
+
+.check {
+    margin-left: 155px;
+    width: 220px;
+    height: 34px;
+    margin-top: 10px;
+}
+
+.check .dl {
+    float: left;
+}
+
+.check p {
+    float: right;
+}
+
+.btn-dl {
+    width: 225px;
+    height: 30px;
+    background-color: #2979C7;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 150px;
+    margin-bottom: 40px;
+}
+
+.login-phone-bot {
+    border-top: 1px solid #C6C6C6;
+    background-color: #F7F7F7;
+}
+
+.login-phone-bot p {
+    margin-top: 20px;
+    margin-left: 15px;
+    color: #0C72C3;
+    cursor: pointer;
+    float: left;
+}
+
+.login-phone-bot span {
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.login-phone-bot a {
+    color: #999999;
+}
+
+/*ÂÖ²¥Í¼*/
+.screen-box {
+    width: 100%;
+    height: 336px;
+}
+.screen-box-next {
+    width: 983px;
+    height: 336px;
+    margin: 0 auto;
+}
+
+.screen {
+    width: 730px;
+    height: 336px;
+    position: relative;
+    float: left;
+}
+
+.screen a {
+    display: none;
+    width: 730px;
+    height: 336px;
+    cursor: move;
+}
+
+.screen ul {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -66px;
+}
+
+.screen li {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    float: left;
+    cursor: pointer;
+}
+
+.screen span {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 80px;
+    cursor: pointer;
+    margin-top: -40px;
+    font: 700 40px/80px "simsun";
+    color: #fff;
+}
+
+#span1 {
+    left: -60px;
+}
+
+#span2 {
+    right: -330px;
+}
+
+.screen .current {
+    background-color: red;
+}
+
+.screen-box-right {
+    width: 253px;
+    height: 336px;
+    float: right;
+}
+
+.screen .show {
+    display: block;
+}
+
+.content-box {
+    background: #F5F5F5;
+    position: relative;
+}
+
+.content {
+    width: 981px;
+    height: 1379px;
+    margin: 0 auto;
+    border-left: 1px solid #D3D3D3;
+    border-right: 1px solid #D3D3D3;
+    background: #ffffff;
+}
+
+.content-left {
+    float: left;
+    width: 730px;
+    border-right: 1px solid #D3D3D3;
+
+}
+
+.content-left-title {
+    height: 38px;
+    width: 690px;
+    border-bottom: 2px solid #C10D0C;
+    margin-left: 20px;
+    padding-top: 19px;
+    position: relative;
+}
+
+.content-left-title em {
+    float: left;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background: url("../images-index/icon-1.png") no-repeat;
+    margin: 11px 10px;
+}
+
+.content-left-title p {
+    float: left;
+    height: 55px;
+    font: 19px/36px "SimSun";
+    margin-right: 20px;
+}
+
+.content-left-title ul {
+    float: left;
+}
+
+.content-left-title li {
+    float: left;
+    margin-top: 2px;
+    font: 10px/34px "SimSun";
+    color: #666666;
+}
+
+.content-left-title img {
+    position: absolute;
+    right: 5px;
+    top: 36px;
+}
+
+.content-left-show {
+    width: 730px;
+    height: 200px;
+    margin: 20px;
+}
+
+.content-left-show li {
+    float: left;
+    height: 200px;
+    width: 141px;
+    margin-right: 41px;
+    opacity: 0.6;
+}
+
+.content-left-show li p {
+    font: 14px/20px "SimSun";
+}
+
+.bg {
+    width: 230px;
+    height: 472px;
+    float: left;
+}
+
+.content-right {
+    float: right;
+    width: 250px;
+}
+
+.content-right em {
+    height: 123px;
+    display: block;
+    border-bottom: 1px solid #D3D3D3;
+    margin-left: -1px;
+    background: url("../images-index/content-right.png") no-repeat;
+}
+
+.content-right-title {
+    height: 28px;
+    border-bottom: 1px solid #D3D3D3;
+    margin: 0 20px;
+    padding-top: 12px;
+}
+
+.content-right-title p {
+    font-size: 12px;
+    line-height: 28px;
+}
+
+.tit-fst {
+    float: left;
+    font-weight: 700;
+}
+
+.tit-lst {
+    float: right;
+    color: #BCBCD3;
+}
+
+.content-right-show {
+    margin: 20px;
+}
+
+.content-right-show li {
+    width: 210px;
+    height: 62px;
+    margin-bottom: 12px;
+    opacity: 0.8;
+
+}
+.content-right-show a{
+    margin-top: 20px;
+}
+.right-box1{
+    width: 250px;
+    height: 500px;
+}
+.right-box2{
+    width: 250px;
+    height: 500px;
+}
+.slide {
+    width: 730px;
+    height: 220px;
+    position: relative;
+}
+
+.slide li {
+    position: absolute;
+    left: 160px;
+    top: 100px;
+}
+
+.slide li img {
+    width: 100%;
+    border: 2px solid #BCBCD3;
+    cursor: move;
+}
+
+.arrow {
+    opacity: 0;
+}
+
+.prev, .next {
+    width: 38px;
+    height: 56px;
+    position: absolute;
+    top: 50%;
+    margin-top: -28px;
+    background: url(../images-index/prev.png) no-repeat;
+    z-index: 99;
+}
+
+.prev {
+    left: 3px;
+}
+
+.next {
+    right: 0;
+    background-image: url(../images-index/next.png);
+}
+
+.content-left-focus {
+    width: 688px;
+    height: 186px;
+    border: 1px solid #BCBCD3;
+    margin: 20px 0 0 20px;
+    background: url("../images-index/focus-bg.png") repeat-x;
+    position: relative;
+}
+
+.content-left-focus-next {
+    width: 631px;
+    height: 140px;
+    margin: 28px 28px 16px 28px;
+    float: left;
+}
+
+.content-left-focus-next img {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.content-left-focus-left {
+    width: 12px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    margin-top: -9px;
+    background: url("../images-index/left.png") no-repeat;
+}
+
+.content-left-focus-right {
+    width: 12px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    margin-top: -9px;
+    background: url("../images-index/right.png") no-repeat;
+}
+
+.content-left-billboard {
+    width: 690px;
+    height: 470px;
+    margin: 20px 20px 40px 20px;
+    border: 1px solid #BCBCD3;
+    border-right: none;
+    border-top: none;
+}
+
+.content-left-billboard img {
+    opacity: 0.6;
+    float: left;
+}
+
+.top {
+    width: 47px;
+    height: 45px;
+    position: absolute;
+    top: 1750px;
+    right: 110px;
+}

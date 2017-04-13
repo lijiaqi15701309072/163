@@ -1,0 +1,166 @@
+.content {
+    width: 900px;
+    height: 930px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-left: 1px solid #D3D3D3;
+    border-right: 1px solid #D3D3D3;
+}
+
+.content-title {
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 2px solid #C20C0C;
+}
+
+.content-title-left {
+    float: left;
+}
+
+.content-title-left p {
+    float: left;
+    font: 21px/50px "SimSun";
+}
+
+.content-title-left button {
+    float: left;
+    width: 90px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 15px;
+    color: #41A8E9;
+    background-color: #FBFBFB;
+    border: 1px solid #C3C3C3;
+    border-radius: 5px;
+}
+
+.content-title-right {
+    float: right;
+}
+
+.btn1 {
+    float: left;
+    width: 45px;
+    height: 30px;
+    border: 1px solid #C1C1C1;
+    margin-top: 10px;
+    border-radius: 5px 0 0 5px;
+    margin-right: -1px;
+}
+
+.btn2 {
+    float: left;
+    width: 45px;
+    height: 30px;
+    border: 1px solid #C1C1C1;
+    margin-top: 10px;
+    border-radius: 0 5px 5px 0;
+}
+
+.content-pic {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.content-pic ul {
+    width: 1000px;
+}
+
+.content-pic li {
+    float: left;
+    margin-right: 50px;
+}
+
+.content-pic-img {
+    height: 198px;
+    width: 140px;
+}
+
+.content-pic-img p {
+    margin-top: 3px;
+    line-height: 18px;
+}
+
+.content-pic-img .p2 {
+    color: #666666;
+}
+
+#pageGro {
+    width: 400px;
+    height: 25px;
+    margin: 0px auto;
+    padding-top: 30px;
+}
+
+#pageGro div, #pageGro div ul li {
+    font-size: 12px;
+    color: #999;
+    line-height: 23px;
+    float: left;
+    margin-left: 5px;
+}
+
+#pageGro div ul li {
+    width: 22px;
+    text-align: center;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+#pageGro div ul li.on {
+    color: #fff;
+    background: #3c90d9;
+    border: 1px solid #3c90d9;
+}
+
+#pageGro .pageUp, #pageGro .pageDown {
+    width: 63px;
+    text-indent: 5px;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+.bd {
+    width: 620px;
+    height: 260px;
+    border-radius: 5px;
+    float: right;
+    background-color: #fff;
+    border: 1px solid #E6E6E6;
+    position: absolute;
+    left: 185px;
+    top: 167px;
+    display: none;
+}
+
+.bd em {
+    width:620px;
+    height: 50px;
+    display: block;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.bd button {
+    width: 75px;
+    height: 25px;
+    margin: 10px 0 10px 20px;
+    border: 1px solid #BEBEBE;
+    border-radius: 2px;
+    background-color: #F7F7F7;
+}
+.bd dl dt{
+    font: 25px/50px "SimSun";
+    display: inline-block;
+    margin-left: 30px;
+    border-right: 1px solid #BEBEBE;
+    text-align: center;
+}
+.bd dl dd{
+    font: 18px/50px "SimSun";
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.getRed{
+    background-color: red;
+}

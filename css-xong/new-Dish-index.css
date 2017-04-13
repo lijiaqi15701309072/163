@@ -1,0 +1,133 @@
+.index{
+    background-color: #F5F5F5;
+
+}
+.b{
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    border-left: 1px solid #D3D3D3;
+    border-right: 1px solid #D3D3D3;
+    background-color: #fff;
+}
+.z{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 25px;
+}
+
+/*热门新碟*/
+.index-top-hot{
+    height: 29px;
+    padding-top: 8px;
+    border-bottom: 2px solid red;
+}
+.index-top-hot a{
+    font-size: 24px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #333;
+}
+.index-bottom-top .all ul li a{
+    opacity: 0.6;
+}
+/*代码复用，热门新碟与全部新碟，图片列表*/
+.index-top-hot-li1 a,.index-top-hot-li2 a,.index-top-hot-li3 a,.index-top-hot-li4 a,.index-top-hot-li5 a,.index-top-hot-li6 a,.index-top-hot-li7 a,.index-top-hot-li8 a,.index-top-hot-li9 a,.index-top-hot-li10 a,.index-top-hot-li30 a,.index-top-hot-li11 a,.index-top-hot-li12 a,.index-top-hot-li13 a,.index-top-hot-li14 a,.index-top-hot-li15 a,.index-top-hot-li16 a,.index-top-hot-li17 a,.index-top-hot-li18 a,.index-top-hot-li19 a,.index-top-hot-li20 a,.index-top-hot-li21 a,.index-top-hot-li22 a,.index-top-hot-li23 a,.index-top-hot-li24 a,.index-top-hot-li25 a,.index-top-hot-li26 a,.index-top-hot-li27 a,.index-top-hot-li28 a,.index-top-hot-li29 a{
+    display: block;
+    margin-right: 50px;
+    float: left;
+    width: 154px;
+    height: 180px;
+}
+.index-top-hot-li1,.index-top-hot-li2,.index-top-hot-li3,.index-top-hot-li4,.index-top-hot-li5{
+    margin-top: 30px;
+}
+.index-top-hot-li6 a,.index-top-hot-li7 a,.index-top-hot-li8 a,.index-top-hot-li9 a,.index-top-hot-li10 a,.index-top-hot-li30 a,.index-top-hot-li11 a,.index-top-hot-li12 a,.index-top-hot-li13 a,.index-top-hot-li14 a,.index-top-hot-li15 a,.index-top-hot-li16 a,.index-top-hot-li17 a,.index-top-hot-li18 a,.index-top-hot-li19 a,.index-top-hot-li20 a,.index-top-hot-li21 a,.index-top-hot-li22 a,.index-top-hot-li23 a,.index-top-hot-li24 a,.index-top-hot-li25 a,.index-top-hot-li26 a,.index-top-hot-li27 a,.index-top-hot-li28 a,.index-top-hot-li29 a{
+    margin-top: 35px;
+}
+.index-top-hot-li5 a,.index-top-hot-li10 a,.index-top-hot-li15 a,.index-top-hot-li20 a,.index-top-hot-li25 a,.index-top-hot-li30 a{
+    margin-right: 0px;
+}
+
+/*全部新碟*/
+.index-bottom{
+    padding-bottom: 11px;
+}
+.index-bottom-top{
+    height: 35px;
+    border-bottom: 2px solid red;
+    margin-top: 35px;
+}
+/*全部新碟上面部分*/
+.all{
+    font-size: 24px;
+    line-height: 18px;
+    width: 98px;
+    float: left;
+    font-weight: 700;
+    color: #333;
+}
+.index-bottom-top ul{
+    float: left;
+    margin-left: 20px;
+}
+.index-bottom-top li{
+    float: left;
+    margin: 0 10px;
+    opacity: 0.6;
+}
+
+
+/*返回顶部*/
+#back-top{
+    height: 130px;
+    position: fixed;
+    bottom: 90px;
+    right: 37px;
+    cursor: pointer;
+    display: none;
+}
+#back-top li{
+    border: 1px solid #cccccc;
+    width: 50px;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    background-color: #fff;
+}
+#back-top li:hover{
+    color: #666666;
+}
+
+/*上一页，下一页*/
+#pageGro {
+    width: 400px;
+    height: 25px;
+    margin: 0px auto;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+#pageGro div, #pageGro div ul li {
+    font-size: 12px;
+    color: #999;
+    line-height: 23px;
+    float: left;
+    margin-left: 5px;
+}
+#pageGro div ul li {
+    width: 22px;
+    text-align: center;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+#ageGro div ul li.on {
+    color: #fff;
+    background: #3c90d9;
+    border: 1px solid #3c90d9;
+}
+#pageGro .pageUp, #pageGro .pageDown {
+    width: 70px;
+    text-indent: 5px;
+    border: 1px solid #999;
+    cursor: pointer;
+}

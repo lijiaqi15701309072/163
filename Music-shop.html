@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>网易云音乐</title>
+    <link rel="icon" href="music.ico"/>
+    <link rel="stylesheet" href="css-xong/Music-shop-base.css"/>
+    <link rel="stylesheet" href="css-xong/Music-shop-index.css"/>
+    <style type="text/css">
+        /*轮播图部分*/
+        .all {
+            width: 1100px;
+            height: 480px;
+            padding: 7px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 1100px;
+            height: 480px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 1100px;
+            height: 480px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 7000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+            width: 0;
+            height: 0;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 35px;
+            height: 60px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 60px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+
+        /*跳跃部分*/
+        #back-top{
+            height: 130px;
+            position: fixed;
+            bottom: 200px;
+            right: 25px;
+            cursor: pointer;
+            display: none;
+
+        }
+        #back-top li{
+            border: 1px solid #cccccc;
+            background-color: #fff;
+            margin-top: -1px;
+            width: 50px;
+            height: 65px;
+            text-align: center;
+            line-height: 65px;
+        }
+        #back-top li:hover{
+            color: #666666;
+        }
+        #back-top .back-top-li{
+            height: 67px;
+        }
+    </style>
+    <script src="js-xong/jQuery1.11.1-min.js"></script>
+    <script>
+        window.onload = function () {
+            //需求1：自动添加小方块和图片。（原理：在图片的最末尾在添加一个图片）
+            //先复制第一个图片所在的li节点添加到ul中。然后根据图片-1生成li添加到ol中。点亮ol中第一个li。
+            //0.获取所欲相关元素
+            var all = document.getElementById("all");
+            var screen = all.firstElementChild || all.firstChild;
+            var imgWidth = screen.offsetWidth;
+            var ul = document.getElementById("ul");
+            var ulLiArr = ul.children;
+            var ol = screen.children[1];
+            var arr = screen.children[2];
+            var left = arr.children[0];
+            var right = left.nextElementSibling || left.nextSibling;
+
+
+            //步骤：
+            //(1).先复制第一个图片所在的li节点添加到ul中。
+            var ulLi = ulLiArr[0].cloneNode(true);
+            ul.appendChild(ulLi);
+            //(2).然后根据图片-1生成li添加到ol中。
+            for (var i = 0; i < ulLiArr.length - 1; i++) {
+                var olLi = document.createElement("li");
+                olLi.innerHTML = i + 1;
+                ol.appendChild(olLi);
+            }
+            //(3).点亮ol中第一个li。
+            var olLiArr = ol.children;
+            olLiArr[0].className = "current";
+
+//
+            //需求2：模拟滑动焦点图(案例1)
+            //思路：1.点亮盒子。(排他思想)  2.移动ul。(利用匀速运动方法)
+            //for循环绑定事件
+            for (var i = 0; i < olLiArr.length; i++) {
+                olLiArr[i].onmouseover = function () {
+                    //(1).点亮盒子。(排他思想)
+                    for (var j = 0; j < olLiArr.length; j++) {
+                        olLiArr[j].className = "";
+                    }
+                    this.className = "current";
+                    //bug:鼠标进入的时候，同步两个计数器的索引值。
+                    square = key = this.innerHTML - 1;
+
+                    //(2).移动ul。(利用匀速运动方法)
+                    animate(-(this.innerHTML - 1) * imgWidth, ul);
+                }
+            }
+
+
+            //需求3：右侧左右焦点图(案例2)(显示隐藏按钮)
+
+            //思路：设置两个计数器，一个作为图片移动用的，一个作为小方块用的。
+            //右侧的按钮，应该是点击之后计数器++；
+            //定义两个计数器，一个图片用，一个小方块用。
+            var key = 0;//图片用
+            var square = 0;//小方块用
+            right.onclick = aotuPlay;
+
+
+            //需求4：左侧左右焦点图(案例2)
+            left.onclick = function () {
+                key--;//图片的索引值不能大于5（不能==6）
+                if (key == -1) {
+                    key = 4;//6张图片，倒数第二张索引值为4
+                    ul.style.left = -5 * imgWidth + "px";//先闪动到最后一张图片，在缓动到倒数第二张。
+                }
+                square--;//小方块的索引值不能大于4（不能==5）
+                if (square == -1) {
+                    square = 4;
+                }
+                //还是点亮盒子，移动ul。只不过这次按照计数器的值移动。
+                //(1).点亮盒子。(排他思想)
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                //(2).移动ul。(利用匀速运动方法)
+                animate(-key * imgWidth, ul);
+            }
+
+            //需求5：定时器的添加(逻辑和右侧焦点图一样)
+            var timer = setInterval(aotuPlay, 3000);
+            //鼠标进入清除定时器，移开在次开启定时器。
+            //大盒子的事件：(显示隐藏按钮)
+            all.onmouseover = function () {
+                arr.style.display = "block";
+                clearInterval(timer);
+            }
+            all.onmouseout = function () {
+                arr.style.display = "none";
+                timer = setInterval(aotuPlay, 3000);
+            }
+
+
+            //右侧按钮逻辑封装
+            function aotuPlay() {
+                //(逻辑和右侧焦点图一样)
+                key++;//图片的索引值不能大于5（不能==6）
+
+                if (key == 6) {
+                    key = 1;//第二张的索引值为1；
+                    ul.style.left = 0;//先闪动到left = 0;这个位置，在缓动到第二张。
+                }
+                square++;//小方块的索引值不能大于4（不能==5）
+                if (square == 5) {
+                    square = 0;
+                }
+                //还是点亮盒子，移动ul。只不过这次按照计数器的值移动。
+                //(1).点亮盒子。(排他思想)
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                //(2).移动ul。(利用匀速运动方法)
+                animate(-key * imgWidth, ul);
+
+            }
+        }
+
+        //匀速运动方法
+        function animate(target, ele) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var speed = target > ele.offsetLeft ?10 : -10;
+                ele.style.left = ele.offsetLeft + speed + "px";
+                if (Math.abs(target - ele.offsetLeft) <= Math.abs(speed)) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+
+        }, 8);
+        }
+    </script>
+</head>
+<body>
+    <!--search 搜索部分-->
+    <div class="search" id="search">
+        <div class="w">
+            <div class="search-left fl logo">
+                   <a href="javascript:;">
+                       网易云音乐
+                   </a>
+            </div>
+            <div class="search-right fr">
+                <input type="text" placeholder="手机"/>
+                <a href="javascript:;">
+                    <p>0</p>
+                </a>
+                <span>
+                    登录
+                    <i><s>◇</s></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Carousel 轮播图部分-->
+    <div class="all" id='all'>
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images-xong/lunbo1.jpg" width="1100" height="480"/></li>
+                <li><img src="images-xong/lunbo2.jpg" width="1100" height="480"/></li>
+                <li><img src="images-xong/lunbo3.jpg" width="1100" height="480"/></li>
+                <li><img src="images-xong/lunbo4.jpg" width="1100" height="480"/></li>
+                <li><img src="images-xong/lunbo5.jpg" width="1100" height="480"/></li>
+            </ul>
+            <ol>
+
+            </ol>
+            <div id="arr">
+                <span id="left"><</span>
+                <span id="right">></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--integral 积分商城部分-->
+    <div class="integral clearfix" id="integral">
+        <ul class="w integral-ul">
+            <li>
+                <a href="javascript:;" class="integral-a1">
+                    <img src="images-xong/18623527952924939.jpg" alt=""/>
+                    云音乐周边
+                </a>
+            </li>
+            <li class="vertical"></li>
+            <li>
+                <a href="javascript:;" class="integral-a2">
+                    <img src="images-xong/18585045045959929.jpg" alt=""/>
+                    数码影音
+                </a>
+            </li>
+            <li class="vertical"></li>
+            <li>
+                <a href="javascript:;" class="integral-a3">
+                    <img src="images-xong/18601537720363221.jpg" alt=""/>
+                    新品上架
+                </a>
+            </li>
+            <li class="vertical"></li>
+            <li>
+                <a href="javascript:;" class="integral-a4">
+                    <img src="images-xong/jifen.png" alt=""/>
+                    <p>
+                        积分商城
+                    </p>
+                    <i>0积分</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <!--welfare 开学福利部分-->
+    <div class="welfare w">
+        <div class="welfare-lefe">
+            <a href="javascript:;"></a>
+        </div>
+        <div class="welfare-right">
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+
+
+
+    <!--Recommend 编辑推荐部分-->
+    <div class="recommend w clearfix" id="recommend">
+        <span>编辑推荐</span>
+        <div class="recommend-content">
+            <ul class="recommend-ul">
+                <li class="recommend-ul-li1">
+                    <a href="javascript:;">
+                        <img src="images-xong/18749971790137549.jpg" alt=""/>
+                    </a>
+                    <p>网易云音乐随笔组合套装</p>
+                    <i>¥55</i>
+                </li>
+                <li class="recommend-ul-li2">
+                    <a href="javascript:;">
+                        <img src="images-xong/18561955301808239.jpg" alt=""/>
+                    </a>
+                    <p>in-voice IVOC-100</p>
+                    <i>¥699</i>
+                </li>
+                <li class="recommend-ul-li3">
+                    <a href="javascript:;">
+                        <img src="images-xong/18555358232018793.jpg" alt=""/>
+                    </a>
+                    <p>先锋SEC-CL31S</p>
+                    <i>¥59</i>
+                </li>
+                <li class="recommend-ul-li4" style="padding-right: 0;">
+                    <a href="javascript:;">
+                        <img src="images-xong/18555358232018801.jpg" alt=""/>
+                    </a>
+                    <p>BL Grip 200</p>
+                    <i>
+                        ¥189
+                        <span>(豪华会员¥178)</span>
+                    </i>
+                </li>
+                <li class="recommend-ul-li5">
+                    <a href="javascript:;">
+                        <img src="images-xong/18832435162220943.jpg" alt=""/>
+                    </a>
+                    <p>JBL T280A+</p>
+                    <i>
+                        ¥229
+                        <span>(豪华会员¥220)</span>
+                    </i>
+                </li>
+                <li class="recommend-ul-li6">
+                    <a href="javascript:;">
+                        <img src="images-xong/18731280092469653.jpg" alt=""/>
+                    </a>
+                    <p>先锋SE-CL32S</p>
+                    <i>¥129</i>
+                </li>
+                <li class="recommend-ul-li7">
+                    <a href="javascript:;">
+                        <img src="images-xong/18557557255274547.jpg" alt=""/>
+                    </a>
+                    <p>网易云音乐镂空笔记本</p>
+                    <i>¥35</i>
+            </li>
+                <li class="recommend-ul-li8"  style="padding-right: 0;">
+                    <a href="javascript:;">
+                        <img src="images-xong/18655413790155711.jpg" alt=""/>
+                    </a>
+                    <p>马歇尔Major II</p>
+                    <i>¥845</i>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--number 数字专辑部分-->
+    <div class="number w">
+        <a href="javascript:;">
+            <img src="images-xong/number.png" alt=""/>
+        </a>
+    </div>
+
+
+
+    <!--Hot 热门商品部分-->
+    <div class="hot w" id="hot">
+        <div class="recommend w clearfix">
+            <span>热门推荐</span>
+            <div class="recommend-content">
+                <ul class="recommend-ul">
+                    <li class="recommend-ul-li1">
+                        <a href="javascript:;">
+                            <img src="images-xong/3310629519183105.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐官方定制帆布袋 米白版</p>
+                        <i>¥39</i>
+                    </li>
+                    <li class="recommend-ul-li2">
+                        <a href="javascript:;">
+                            <img src="images-xong/18682901580843438.jpg" alt=""/>
+                        </a>
+                        <p>先锋 SEC-CL100</p>
+                        <i>¥119</i>
+                    </li>
+                    <li class="recommend-ul-li3">
+                        <a href="javascript:;">
+                            <img src="images-xong/18494885092458657.jpg" alt=""/>
+                        </a>
+                        <p>先锋 SE-MJ722-T重低音头戴式便携折叠耳机</p>
+                        <i>¥199</i>
+                    </li>
+                    <li class="recommend-ul-li4" style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18655413790155708.jpg" alt=""/>
+                        </a>
+                        <p>Beats URBEATS</p>
+                        <i>
+                            ¥189
+                            <span>(豪华会员¥178)</span>
+                        </i>
+                    </li>
+                    <li class="recommend-ul-li5">
+                        <a href="javascript:;">
+                            <img src="images-xong/18731280092469655.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐口袋型笔记本套装</p>
+                        <i>
+                            ¥35
+                        </i>
+                    </li>
+                    <li class="recommend-ul-li6">
+                        <a href="javascript:;">
+                            <img src="images-xong/18832435162220949.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐车载快速充电器</p>
+                        <i>¥59</i>
+                    </li>
+                    <li class="recommend-ul-li7">
+                        <a href="javascript:;">
+                            <img src="images-xong/18731280092469653.jpg" alt=""/>
+                        </a>
+                        <p>先锋SE-CL52S</p>
+                        <i>¥179</i>
+                    </li>
+                    <li class="recommend-ul-li8"  style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18823639069198509.jpg" alt=""/>
+                        </a>
+                        <p>索尼MDR-ZX310</p>
+                        <i>¥199</i>
+                    </li>
+                    <li class="recommend-ul-li9">
+                        <a href="javascript:;">
+                            <img src="images-xong/18823639069198515.jpg" alt=""/>
+                        </a>
+                        <p>索尼XB450AP</p>
+                        <i>¥299</i>
+                    </li>
+                    <li class="recommend-ul-li10">
+                        <a href="javascript:;">
+                            <img src="images-xong/18825838092507299.jpg" alt=""/>
+                        </a>
+                        <p>先锋 CL71S</p>
+                        <i>¥299</i>
+                    </li>
+                    <li class="recommend-ul-li11">
+                        <a href="javascript:;">
+                            <img src="images-xong/3420580718995102.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐涂鸦风笔记本</p>
+                        <i>¥35</i>
+                    </li>
+                    <li class="recommend-ul-li12" style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18580646999463608.jpg" alt=""/>
+                        </a>
+                        <p>JBL T280A</p>
+                        <i>¥135</i>
+                    </li>
+                    <li class="recommend-ul-li13">
+                        <a href="javascript:;">
+                            <img src="images-xong/18731280092469649.jpg" alt=""/>
+                        </a>
+                        <p>先锋 SEC-CL51S</p>
+                        <i>¥112</i>
+                    </li>
+                    <li class="recommend-ul-li14">
+                        <a href="javascript:;">
+                            <img src="images-xong/18716986441311812.jpg" alt=""/>
+                        </a>
+                        <p>漫步者H650P</p>
+                        <i>¥135</i>
+                    </li>
+                    <li class="recommend-ul-li15">
+                        <a href="javascript:;">
+                            <img src="images-xong/18665309394712674.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐车载蓝牙播放器</p>
+                        <i>¥99</i>
+                    </li>
+                    <li class="recommend-ul-li16" style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18832435162220949.jpg" alt=""/>
+                        </a>
+                        <p>网易云音乐车载快速充电器</p>
+                        <i>¥35</i>
+                    </li>
+                    <li class="recommend-ul-li17">
+                        <a href="javascript:;">
+                            <img src="images-xong/18731280092469653.jpg" alt=""/>
+                        </a>
+                        <p>先锋SE-CL52S</p>
+                        <i>¥135</i>
+                    </li>
+                    <li class="recommend-ul-li18">
+                        <a href="javascript:;">
+                            <img src="images-xong/18555358232018801.jpg" alt=""/>
+                        </a>
+                        <p>JBL Grip100</p>
+                        <i>¥105</i>
+                    </li>
+                    <li class="recommend-ul-li19">
+                        <a href="javascript:;">
+                            <img src="images-xong/18727981557605160.jpg" alt=""/>
+                        </a>
+                        <p>杰伟世（JVC）JVC-SR50X</p>
+                        <i>¥269</i>
+                    </li>
+                    <li class="recommend-ul-li20" style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18682901580893809.jpg" alt=""/>
+                        </a>
+                        <p>威索尼可 VSD2SI 云音乐限量配色款</p>
+                        <i>¥199</i>
+                    </li>
+                    <li class="recommend-ul-li21">
+                        <a href="javascript:;">
+                            <img src="images-xong/18732379604098816.jpg" alt=""/>
+                        </a>
+                        <p>JBL GO 音乐金砖</p>
+                        <i>¥249</i>
+                    </li>
+                    <li class="recommend-ul-li22">
+                        <a href="javascript:;">
+                            <img src="images-xong/18682901580843423.jpg" alt=""/>
+                        </a>
+                        <p>索尼MDR-XB50AP</p>
+                        <i>¥175</i>
+                    </li>
+                    <li class="recommend-ul-li23">
+                        <a href="javascript:;">
+                            <img src="images-xong/18823639069198509.jpg" alt=""/>
+                        </a>
+                        <p>BEATS EP</p>
+                        <i>¥788</i>
+                    </li>
+                    <li class="recommend-ul-li24" style="padding-right: 0;">
+                        <a href="javascript:;">
+                            <img src="images-xong/18729081069213924.jpg" alt=""/>
+                        </a>
+                        <p>先锋 SE-MX9</p>
+                        <i>¥799</i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--back 跳跃、返回部分-->
+    <ul id="back-top">
+        <li>
+            <a href="#integral">积分商城</a>
+        </li>
+        <li>
+            <a href="#recommend">编辑推荐</a>
+        </li>
+        <li>
+            <a href="#hot">热门商品</a>
+        </li>
+        <li  class="back-top-li" >
+            <img src="images-xong/Top.jpg" alt="" id="back-top-li-img"/>
+        </li>
+    </ul>
+    <script>
+//        window.onload = function () {
+            //需求1：页面滑动后，被卷去的头部超过200px；显示小火箭，否则隐藏。
+            //绑定屏幕滑动事件。判断被卷去的头部距离。
+            var ul = document.getElementById("back-top");
+            var img = document.getElementById("back-top-li-img");
+            window.onscroll = function () {
+                if(scroll().top > 200){
+                    ul.style.display = "block";
+                }else{
+                    ul.style.display = "none";
+                }
+                leader = scroll().top;
+                //页面被卷去的头部的值，就是页面的纵坐标。屏幕每次缓动，重新为leader赋值。
+            }
+
+            //需求2：点击小火箭返回顶部。
+            //技术点：页面跳转：window.scrollTo(x,y);
+            var timer = null;
+            var target = 0;
+            var leader = 0;//页面的纵坐标，永远都是被卷去的头部。
+            img.onclick = function () {
+//                window.scrollTo(0,0);//本质来讲，这个方法是bom的一个方法。
+                //写一个带有缓动移动的返回顶部。
+                //思路：以前我们是让盒子移动(left/top),缓动动画封装。
+                //思路：现在让页面移动（ window.scrollTo(0,0); ）
+                //要用定时器，先清除定时器。
+                timer = setInterval(function () {
+                    //获取步长
+                    var step = (target-leader)/10;
+                    //二次处理步长
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    leader = leader + step;
+                    //赋值。
+                    window.scrollTo(0,leader);
+                    console.log(1);
+                    //清除定时器
+                    if(target === leader){
+                        clearInterval(timer);
+                    }
+                },30);
+            }
+//        }
+    </script>
+
+    <!--footer 页脚部分-->
+    <div class="footer">
+        <div class="w">
+            <div class="footer-left fl">
+                <a href="javascript:;">
+                    <img src="images-xong/Music-people.png" alt=""/>
+                    <img src="images-xong/Music-zhuan.png" alt=""/>
+                </a>
+                <a href="javascript:;"></a>
+            </div>
+            <div class="footer-right fr">
+                <ul>
+                    <li><a href="javascript:;">关于网易</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:;">客户服务</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:;">服务条款</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:;">网站导航</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:;">意见反馈</a></li>
+                </ul>
+                <br/>
+                <div class="footer-right-bottom">
+                    <p>网易公司版权所有1997-2017 杭州乐读科技有限公司运营：<a href="">浙网文[2015]0415-135号</a></p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

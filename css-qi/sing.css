@@ -1,0 +1,226 @@
+    @charset "UTF-8";
+    /*css 初始化 */
+    html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    fieldset, img, input, button { 			/*fieldset组合表单中的相关元素*/
+        border: none;
+        padding: 0;
+        margin: 0;
+        outline-style: none;
+    }
+
+    ul, ol {
+        list-style: none;				/*清除列表风格*/
+    }
+
+    input {
+        padding-top: 0;
+        padding-bottom: 0;
+        font-family: "SimSun", "宋体";
+    }
+
+    select, input {
+        vertical-align: middle;
+    }
+
+    select, input, textarea {
+        font-size: 12px;
+        margin: 0;
+    }
+
+    /*防止多行文本框拖动*/
+    textarea {
+        resize: none;
+    }
+
+    /*  去掉图片底部默认的3像素空白缝隙*/
+    img {
+        border: 0;
+        vertical-align: middle;
+    }
+
+
+    table {
+        border-collapse: collapse;			/*合并外边线*/
+    }
+
+
+    body {
+        font: 12px/150% Arial, Verdana, "\5b8b\4f53";	/*宋体，Unicode，统一码*/
+        color: #666;
+        background: #fff
+    }
+
+    .clearfix:before, .clearfix:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1; /*IE/7/6*/
+    }
+
+    /*h1, h2, h3, h4, h5, h6 {*/
+    /*text-decoration: none;*/
+    /*font-weight: normal;*/
+    /*font-size: 100%;*/
+    /*}*/
+
+    s, i, em {
+        font-style: normal;
+        text-decoration: none;
+    }
+
+    .col-red {
+        color: #C81623 !important;
+    }
+
+    /*公共类*/
+    .w {
+        /*版心 提取 */
+        width: 988px;
+        margin: 0 auto;
+    }
+
+    .fl {
+        float: left
+    }
+
+    .fr {
+        float: right
+    }
+
+    .al {
+        text-align: left
+    }
+
+    .ac {
+        text-align: center
+    }
+
+    .ar {
+        text-align: right
+    }
+
+    .hide {
+        display: none
+    }
+    a {
+        text-decoration: none;
+    }
+
+
+    /*歌手部分*/
+
+    .sing-all {
+        width: 980px;
+        height: 1700px;
+        position: relative;
+        border-left: 1px solid #cccccc;
+    }
+    .sing-l {
+        width: 150px;
+        height:200px;
+        border: 1px solid #ccc;
+        position: fixed;
+        top: 160px;
+        left: 210px;
+        border-radius: 3px;
+    }
+    .sing-l-inf {
+        width: 150px;
+        margin-top: 10px;
+        padding-left: 30px;
+    }
+    .sing-l-inf h2 {
+        height: 25px;
+        font-size: 16px;
+        font-family: "microsoft yahei";
+        padding-left: 24px;
+        color: #333;
+    }
+    .sing-l-inf ul {
+        margin-top: 12px;
+        margin-bottom: 14px;
+    }
+    .sing-l-inf li {
+        height: 29px;
+        list-style: square;
+        margin-left: 23px;
+    }
+    .sing-l-inf a {
+        color: #666;
+    }
+    .sing-l-inf a:hover {
+        color: #C20C0C;
+    }
+    .sing-r {
+        width: 799px;
+        height: 1700px;
+        border-right: 1px solid #ccc;
+        position: absolute;
+        left: 180px;
+    }
+    .sing-r-inf {
+        width: 719px;
+        margin: 50px auto;
+
+    }
+    .sing-r-inf-rz{
+        width: 719px;
+        height: 28px;
+        border-bottom: 2px solid #C20C0C;
+        padding-top: 12px;
+    }
+    .sing-r-inf-rz h3,.sing-r-inf-rm h3,.sing-r-inf-ms h3,.sing-r-inf-ws h3{
+        font-size: 24px;
+    }
+    .sing-r-inf-rz a,.sing-r-inf-rm a,.sing-r-inf-ms a,.sing-r-inf-ws a{
+        color: #666;
+    }
+    .sing-r-inf-lis,.sing-r-inf-rm-lis,.sing-r-inf-ms-lis,.sing-r-inf-ws-lis {
+        width: 736px;
+    }
+    .sing-r-inf-lis a,.sing-r-inf-rm-lis a,.sing-r-inf-ms-lis a,.sing-r-inf-ws-lis a{
+        display: block;
+        margin-top: 7px;
+        color: #666;
+    }
+    .sing-r-inf-lis a:hover,.sing-r-inf-rm-lis a:hover,.sing-r-inf-ms-lis a:hover,.sing-r-inf-ws-lis a:hover {
+        color: #C20C0C;
+    }
+    .sing-r-inf-lis div,.sing-r-inf-rm-lis div,.sing-r-inf-ms-lis div,.sing-r-inf-ws-lis div{
+        float: left;
+        margin-right: 17px;
+        margin-top: 15px;
+        cursor: pointer;
+    }
+
+    .sing-r-inf-rm {
+        width: 719px;
+        height: 28px;
+        border-bottom: 2px solid #C20C0C;
+        padding-top: 385px;
+    }
+    .sing-r-inf-ms {
+        width: 719px;
+        height: 28px;
+        border-bottom: 2px solid #C20C0C;
+        padding-top: 385px;
+    }
+    .sing-r-inf-ws {
+        width: 719px;
+        height: 28px;
+        border-bottom: 2px solid #C20C0C;
+        padding-top: 385px;
+    }
+
+

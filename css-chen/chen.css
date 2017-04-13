@@ -1,0 +1,107 @@
+#center{
+    width: 100%;
+    background-color: #F5F5F5;
+    position: relative;
+}
+.center1{
+    width: 980px;
+    margin: 0 auto;
+    height: 1000px;
+    background-color: #FFFFFF;
+}
+.img{
+    position: absolute;
+    bottom: 100px;
+    right: 110px;
+    cursor: pointer;
+    display: none;
+    border: 1px solid #ccc;
+    background-color: red;
+}
+.center2{
+    width: 900px;
+    height: 200px;
+    margin: 0 auto;
+}
+.center2 img{
+    margin-left: 5px;
+}
+.center2 img:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+.center3 .center-left{
+    float:left;
+}
+.center3 .center-right{
+    float: right;
+}
+.center3 h2{
+    display: inline-block;
+    width: 426px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #C20C0C;
+    overflow: hidden;
+}
+.center3 p{
+    height: 15px;
+    font: 12px/15px "simsun";
+    width: 33px;
+    float: right;
+    position: absolute;
+    top: 18px;
+    right: 5px;
+    cursor: pointer;
+}
+.center3 p:hover{
+    opacity: 0.5;
+}
+.center3 ul{
+    height: 370px;
+}
+.center3 li{
+    height: 62px;
+    position: relative;
+}
+.center3 li:hover{
+    background-color: #E6E6E6;
+}
+.pic{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.pic-text{
+    width: 240px;
+    height: 40px;
+    font-size: 12px;
+    position: absolute;
+    top: 15px;
+    left: 60px;
+    position: relative;
+}
+.pic-text  small{
+    position: absolute;
+    top: 17px;
+    cursor:pointer;
+}
+.pic-right{
+    width: 60px;
+    height: 18px;
+    border: 1px solid #999999;
+    font-size: 12px;
+    position: absolute;
+    top: 15px;
+    left: 340px;
+    line-height: 18px;
+    padding-left: 10px;
+    cursor:pointer;
+}
+
+

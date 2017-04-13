@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords"
+          content="网易云音乐，音乐，播放器，网易，下载，播放，DJ，免费，明星，精选，歌单，识别音乐，收藏，分享音乐，音乐互动，高音质，320K，音乐社交，netease cloud music，cloudmusic，neteasemusic，neteasecloudmusic，music，netease，cloud"/>
+    <meta name="description"
+          content="网易云音乐是一款专注于发现与分享的音乐产品，依托专业音乐人、DJ、好友推荐及社交功能，为用户打造全新的音乐生活。cloud，netease cloud music，cloudmusic，neteasemusic，neteasecloudmusic，music，netease"/>
+    <title>网易云音乐</title>
+    <link rel="short icon" href="music.ico"/>
+    <link rel="stylesheet" href="css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="css/index.css" type="text/css"/>
+    <script src="js/jquery-1.11.1.js"></script>
+
+</head>
+<body>
+
+
+<audio src="杨洋 - 微微一笑很倾城 (《微微一笑很倾城》电视剧片尾曲).mp3" autoplay="autoplay"></audio>
+<div class="header">
+    <div class="wrap">
+        <h1 class="logo">
+            <a href="#">网易云音乐</a>
+        </h1>
+        <ul class="mian-nav">
+            <li class="first">
+                <a href="javaScript:;" class="z-slt">发现音乐</a>
+            </li>
+            <li>
+                <a href="javaScript:;">我的音乐</a>
+            </li>
+            <li>
+                <a href="javaScript:;">朋友</a>
+            </li>
+            <li>
+                <a href="Music-shop.html" target="_blank">商城</a>
+            </li>
+            <li>
+                <a href="javaScript:;">音乐人</a>
+            </li>
+            <li class="last-li">
+                <a href="#" target="_blank" class="last">下载客户端</a>
+                <i class="hot"></i>
+            </li>
+        </ul>
+        <div class="search" id="search">
+            <input type="text" placeholder="单曲 / 歌手 / 专辑 / MV"/>
+        </div>
+        <script>
+            var search = document.getElementById("search");
+            var inp = search.children[0];
+            var arr = ["微微一笑很倾城", "微微一笑很倾城-杨洋", "微白城市(Winter song)", "微甜-武艺", "微音", "微微一笑很倾城-MC梦珂"];
+            inp.onkeyup = function () {
+                var newArr = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i].indexOf(inp.value) === 0) {
+                        newArr.push(arr[i]);
+                    }
+                }
+                if (search.children.length === 2) {
+                    search.removeChild(search.children[1]);
+                }
+                if (newArr.length === 0 || this.value === "") {
+                    return;
+                }
+                var ul = document.createElement("ul");
+                for (var i = 0; i < newArr.length; i++) {
+                    var newLi = document.createElement("li");
+                    var newa = document.createElement("a");
+                    newa.innerHTML = newArr[i];
+                    newLi.appendChild(newa);
+                    ul.appendChild(newLi);
+                }
+                search.appendChild(ul);
+                ul.onclick = function () {
+                    this.style.display = "none";
+                    inp.value = "";
+                }
+            }
+
+        </script>
+        <div class="login">
+            <i>登录</i>
+            <em></em>
+        </div>
+        <script>
+            $(function () {
+                $(".login i").mouseenter(function () {
+                    $(".login-logo").css("display", "block");
+                });
+                $(".login-logo").mouseenter(function () {
+                    $(this).css("display", "block");
+                });
+                $(".login i").mouseleave(function () {
+                    $(".login-logo").css("display", "none");
+                });
+                $(".login-logo").mouseleave(function () {
+                    $(this).css("display", "none");
+                });
+                $(".login-logo li:eq(0)").click(function () {
+                    $(".login-phone").css("display", "block");
+                    $(".login-logo").css("display", "none");
+                });
+            })
+        </script>
+        <div class="login-logo" style="display: none;">
+            <ul>
+                <li>
+                    <a href="javascript:;">手机号登录</a>
+                </li>
+                <li>
+                    <a href="weixin.html" target="_blank">微信登录</a>
+                </li>
+                <li>
+                    <a href="javascript:;" target="_blank">QQ登录</a>
+                </li>
+                <li>
+                    <a href="javascript:;" target="_blank">新浪微博登录</a>
+                </li>
+                <li>
+                    <a href="javascript:;" target="_blank">网易邮箱登录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="login-phone" style="display: none;">
+            <div class="login-phone-title">
+                <p>手机号登录</p>
+                <img src="images-index/close.png" alt=""/>
+            </div>
+            <div class="login-phone-item">
+                <input type="text" class="txt1" id="inp1" placeholder="请输入手机号"/><span>输入11位手机号码</span>
+                <input type="text" class="txt2" id="inp2" placeholder="请输入密码"/><span>请输入您的密码</span>
+                <script>
+                    $(function () {
+                        $("#inp1").blur(function () {
+                            var str = (/^((17[0-9])|(15[^4,\D])|(18[0-9]))\d{8}$/);
+                            if (str.test(this.value)) {
+                                this.nextSibling.innerHTML = "格式正确";
+                                this.nextSibling.style.color = "green";
+                            } else {
+                                this.nextSibling.innerHTML = "格式错误";
+                                this.nextSibling.style.color = "red";
+                            }
+                        });
+
+                        $("#inp2").blur(function () {
+                            var str = /^[\$a-zA-Z0-9_-]{6,18}$/;
+                            if (str.test(this.value)) {
+                                this.nextSibling.innerHTML = "格式正确";
+                                this.nextSibling.style.color = "green";
+                            } else {
+                                this.nextSibling.innerHTML = "格式错误";
+                                this.nextSibling.style.color = "red";
+                            }
+                        })
+                        $(".login-phone-title img").click(function () {
+                            $(".login-phone").css("display", "none");
+                        })
+                        $(".btn-dl").click(function () {
+                            $(".login i").html($("#inp1").val());
+                            $(".login-phone").css("display", "none");
+                        });
+                    });
+                </script>
+                <div class="check">
+                    <input type="checkbox" class="dl"/>自动登录
+                    <p><a href="javascript:;">忘记密码？</a></p>
+                </div>
+                <input type="button" class="btn-dl" value="登录"/>
+            </div>
+            <div class="login-phone-bot">
+                <p>< 其他登录方式</p>
+                <span><a href="index.html">没有账号？免费注册></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="next-nav">
+    <ul>
+        <li><a href="javascript:;"><span>推荐</span></a></li>
+        <li><a href="Billboard.html"><span>排行榜</span></a></li>
+        <li><a href="playlist.html"><span>歌单</span></a></li>
+        <li><a href="radio.html"><span>主播电台</span></a></li>
+        <li><a href="singer.html"><span>歌手</span></a></li>
+        <li><a href="new-Dish.html"><span>新碟上架</span></a></li>
+    </ul>
+</div>
+<div class="screen-box" id="scr">
+    <div class="screen-box-next">
+        <div class="screen" id="screen">
+            <a class="show" href="#"><img src="images-index/banner1.jpg" alt=""/></a>
+            <a href="#"><img src="images-index/banner2.jpg" alt=""/></a>
+            <a href="#"><img src="images-index/banner3.jpg" alt=""/></a>
+            <a href="#"><img src="images-index/banner4.jpg" alt=""/></a>
+            <a href="#"><img src="images-index/banner5.jpg" alt=""/></a>
+            <a href="#"><img src="images-index/banner6.jpg" alt=""/></a>
+            <ul>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span id="span1">&lt;</span>
+            <span id="span2">&gt;</span>
+        </div>
+        <div class="screen-box-right">
+            <img src="images-index/banner-right1.png" alt=""/>
+        </div>
+    </div>
+</div>
+<script>
+    var screenBox = document.getElementById("scr");
+    var div = document.getElementById("screen");
+    var aArr = div.getElementsByTagName("a");
+    var ul = div.children[6];
+    var liArr = ul.children;
+    var span1 = document.getElementById("span1");
+    var span2 = div.lastElementChild || div.lastChild;
+    var index = 0;
+    span2.onclick = fn;
+    span1.onclick = function () {
+        index--;
+        if (index < 0) {
+            index = 5;
+        }
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].className = "";
+            aArr[i].className = "";
+        }
+        liArr[index].className = "current";
+        aArr[index].className = "show";
+    }
+    for (var j = 0; j < liArr.length; j++) {
+        liArr[j].aaa = j;
+        liArr[j].onclick = function () {
+            index = this.aaa;
+            for (var i = 0; i < liArr.length; i++) {
+                liArr[i].className = "";
+                aArr[i].className = "";
+            }
+            liArr[index].className = "current";
+            aArr[index].className = "show";
+        }
+    }
+
+    var timer = setInterval(fn, 1000);
+    div.onmouseover = function () {
+        clearInterval(timer);
+    }
+    div.onmouseout = function () {
+        timer = setInterval(fn, 1000);
+    }
+    function fn() {
+        index++;
+        if (index > 5) {
+            index = 0;
+        }
+        for (var i = 0; i < liArr.length; i++) {
+            liArr[i].className = "";
+            aArr[i].className = "";
+            if (index == i) {
+                screenBox.style.background = "url('images-index/banner" + (index + 1) + "-bg.png') repeat-x";
+            }
+        }
+
+        liArr[index].className = "current";
+        aArr[index].className = "show";
+    }
+
+</script>
+<div class="content-box">
+    <div class="content">
+        <div class="content-left">
+            <div class="content-left-title">
+                <em></em>
+
+                <p><a href="playlist.html">热门推荐</a></p>
+                <ul>
+                    <li><a href="javascript:;">华语</a>&nbsp;|&nbsp;</li>
+                    <li><a href="javascript:;">流行</a>&nbsp;|&nbsp;</li>
+                    <li><a href="javascript:;">摇滚</a>&nbsp;|&nbsp;</li>
+                    <li><a href="javascript:;">民谣</a>&nbsp;|&nbsp;</li>
+                    <li><a href="javascript:;">电子</a></li>
+                </ul>
+                <img src="images-index/more.png" alt=""/>
+            </div>
+            <div class="content-left-show">
+                <ul id="tcxs">
+                    <li>
+                        <a href="javascript:;"><img src="images-index/show1.png" alt=""/></a>
+
+                        <p>从姑娘唱到女神，活在传说中</p>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="images-index/show2.png" alt=""/></a>
+
+                        <p>抒情摇滚 · 骨子里的温柔与呐喊</p>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="images-index/show3.png" alt=""/></a>
+
+                        <p>「灵动电子」臻美百首精选Ⅱ 早安世界</p>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="images-index/show4.png" alt=""/></a>
+
+                        <p>我可能谈了一场假恋爱</p>
+                    </li>
+                </ul>
+            </div>
+            <script>
+                $(function () {
+                    $("#tcxs").children("li").mouseover(function () {
+                        $(this).css("opacity", 1);
+                    });
+                    $("#tcxs").children("li").mouseout(function () {
+                        $(this).css("opacity", 0.6);
+                    });
+                });
+            </script>
+            <div class="slide" id="xzmm">
+                <ul>
+                    <li><a href="#"><img src="images-index/xzmm-1.jpg"/></a></li>
+                    <li><a href="#"><img src="images-index/xzmm-2.jpg"/></a></li>
+                    <li><a href="#"><img src="images-index/xzmm-3.jpg"/></a></li>
+                    <li><a href="#"><img src="images-index/xzmm-4.jpg"/></a></li>
+                    <li><a href="#"><img src="images-index/xzmm-5.jpg"/></a></li>
+                </ul>
+                <div class="arrow" id="arrow">
+                    <a href="javascript:;" class="prev"></a>
+                    <a href="javascript:;" class="next"></a>
+                </div>
+            </div>
+            <script src="js/animate.js"></script>
+            <script>
+                window.onload = function () {
+                    var arr = [
+                        {
+                            width: 200,
+                            top: 0,
+                            left: 55,
+                            opacity: 0.2,
+                            "z-index": 2
+                        },
+                        {
+                            width: 300,
+                            top: 40,
+                            left: 20,
+                            opacity: 0.8,
+                            "z-index": 3
+                        },
+                        {
+                            width: 400,
+                            top: 20,
+                            left: 170,
+                            opacity: 1,
+                            "z-index": 4
+                        },
+                        {
+                            width: 300,
+                            top: 40,
+                            left: 410,
+                            opacity: 0.8,
+                            "z-index": 3
+                        }
+                        ,
+                        {
+                            width: 200,
+                            top: 0,
+                            left: 470,
+                            opacity: 0.2,
+                            "z-index": 2
+                        }
+                    ];
+                    var slide = document.getElementById("xzmm");
+                    var liArr = slide.getElementsByTagName("li");
+                    var arrow = slide.children[1];
+                    var prev = arrow.children[0];
+                    var next = arrow.children[1];
+                    var flag = true;
+
+                    slide.onmouseover = function () {
+                        animate(arrow, {"opacity": 1});
+                    }
+                    slide.onmouseout = function () {
+                        animate(arrow, {"opacity": 0});
+                    }
+
+                    autoPlay();
+
+                    next.onclick = function () {
+                        if (flag) {
+                            flag = false;
+                            autoPlay(false);
+                        }
+                    }
+                    prev.onclick = function () {
+                        autoPlay(true);
+                    }
+
+
+                    function autoPlay(bool) {
+                        if (bool !== undefined) {
+                            if (bool) {
+                                arr.unshift(arr.pop());
+                            } else {
+                                arr.push(arr.shift());
+                            }
+                        }
+
+                        for (var i = 0; i < liArr.length; i++) {
+                            animate(liArr[i], arr[i], function () {
+                                flag = true;
+                            });
+                        }
+                    }
+
+                }
+            </script>
+            <div class="content-left-title">
+                <em></em>
+
+                <p><a href="new-Dish.html">新碟上架</a></p>
+                <img src="images-index/more.png" alt=""/>
+            </div>
+            <div class="content-left-focus">
+                <div class="content-left-focus-next" id="boxImg">
+                    <img src="images-index/focus-1.png" alt=""/>
+                    <img src="images-index/focus-2.png" alt=""/>
+                    <img src="images-index/focus-3.png" alt=""/>
+                    <img src="images-index/focus-4.png" alt=""/>
+                    <img src="images-index/focus-5.png" alt=""/>
+                </div>
+                <div class="content-left-focus-left"></div>
+                <div class="content-left-focus-right"></div>
+            </div>
+            <script>
+                $(function () {
+                    $(".content-left-focus-left").click(function () {
+                        var newImg = $("#boxImg img").first().clone(true);
+                        $("#boxImg").append(newImg);
+                        $("#boxImg img").first().remove();
+                    })
+                    $(".content-left-focus-right").click(function () {
+                        var newImg = $("#boxImg img").last().clone(true);
+                        $("#boxImg").prepend(newImg);
+                        $("#boxImg img").last().remove();
+                    })
+                });
+            </script>
+            <div class="content-left-title">
+                <em></em>
+
+                <p><a href="Billboard.html">榜单</a></p>
+                <img src="images-index/more.png" alt=""/>
+            </div>
+            <div class="content-left-billboard">
+                <div class="bg">
+                    <img src="images-index/bd-1.png" alt=""/>
+                    <img src="images-index/bd-1-1.png" alt=""/>
+                    <img src="images-index/bd-1-2.png" alt=""/>
+                    <img src="images-index/bd-1-3.png" alt=""/>
+                    <img src="images-index/bd-1-4.png" alt=""/>
+                    <img src="images-index/bd-1-5.png" alt=""/>
+                    <img src="images-index/bd-1-6.png" alt=""/>
+                    <img src="images-index/bd-1-7.png" alt=""/>
+                    <img src="images-index/bd-1-8.png" alt=""/>
+                    <img src="images-index/bd-1-9.png" alt=""/>
+                    <img src="images-index/bd-1-10.png" alt=""/>
+                    <img src="images-index/bd-1-11.png" alt=""/>
+                </div>
+                <div class="bg">
+                    <img src="images-index/bd-2.png" alt=""/>
+                    <img src="images-index/bd-2-1.png" alt=""/>
+                    <img src="images-index/bd-2-2.png" alt=""/>
+                    <img src="images-index/bd-2-3.png" alt=""/>
+                    <img src="images-index/bd-2-4.png" alt=""/>
+                    <img src="images-index/bd-2-5.png" alt=""/>
+                    <img src="images-index/bd-2-6.png" alt=""/>
+                    <img src="images-index/bd-2-7.png" alt=""/>
+                    <img src="images-index/bd-2-8.png" alt=""/>
+                    <img src="images-index/bd-2-9.png" alt=""/>
+                    <img src="images-index/bd-2-10.png" alt=""/>
+                    <img src="images-index/bd-2-11.png" alt=""/>
+                </div>
+                <div class="bg">
+                    <img src="images-index/bd-3.png" alt=""/>
+                    <img src="images-index/bd-3-1.png" alt=""/>
+                    <img src="images-index/bd-3-2.png" alt=""/>
+                    <img src="images-index/bd-3-3.png" alt=""/>
+                    <img src="images-index/bd-3-4.png" alt=""/>
+                    <img src="images-index/bd-3-5.png" alt=""/>
+                    <img src="images-index/bd-3-6.png" alt=""/>
+                    <img src="images-index/bd-3-7.png" alt=""/>
+                    <img src="images-index/bd-3-8.png" alt=""/>
+                    <img src="images-index/bd-3-9.png" alt=""/>
+                    <img src="images-index/bd-3-10.png" alt=""/>
+                    <img src="images-index/bd-3-11.png" alt=""/>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $(".bg img").mouseenter(function () {
+                    $(this).css("opacity", 1);
+                })
+                $(".bg img").mouseleave(function () {
+                    $(this).css("opacity", 0.6);
+                })
+            })
+        </script>
+        <div class="content-right">
+            <em></em>
+
+            <div class="right-box1">
+                <div class="content-right-title">
+                    <p class="tit-fst"><a href="singer.html">入驻歌手</a></p>
+
+                    <p><a href="#" class="tit-lst">查看全部></a></p>
+                </div>
+                <div class="content-right-show">
+                    <ul id="ul1">
+                        <li>
+                            <a href="javascript:;"><img src="images-index/rz-1.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/rz-2.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/rz-3.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/rz-4.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/rz-5.png" alt=""/></a>
+                        </li>
+
+                        <a href="javascript:;"><img src="images-index/rz-6.png" alt=""/></a>
+
+                    </ul>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    $("#ul1 li").mouseover(function () {
+                        $(this).css("border", "2px solid skyblue")
+                    });
+                    $("#ul1 li").mouseout(function () {
+                        $(this).css("border", "")
+                    });
+                })
+            </script>
+            <div class="right-box2">
+                <div class="content-right-title">
+                    <p class="tit-fst"><a href="radio.html">热门DJ</a></p>
+                </div>
+                <div class="content-right-show">
+                    <ul id="ul2">
+                        <li>
+                            <a href="javascript:;"><img src="images-index/dj-1.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/dj-2.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/dj-3.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/dj-4.png" alt=""/></a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><img src="images-index/dj-5.png" alt=""/></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    $("#ul2 li").mouseover(function () {
+                        $(this).css("opacity", 1)
+                    });
+                    $("#ul2 li").mouseout(function () {
+                        $(this).css("opacity", 0.6)
+                    });
+                })
+            </script>
+        </div>
+    </div>
+</div>
+<div class="top" id="top">
+    <img src="images-index/top.png" style="display: none;"/>
+</div>
+<script>
+    $(function () {
+        if ($(window).height() > 400) {
+            $(".top img").css("display", "block");
+        }
+        if ($(window).height() < 400) {
+            $(".top img").css("display", "none");
+        }
+        var top = document.getElementById("top");
+        var img = top.getElementsByTagName("img")[0];
+        var timer = null;
+        var target = 0;
+
+        img.onclick = function () {
+            var leader = $(window).scrollTop();
+            console.log(leader);
+            timer = setInterval(function () {
+                var step = (target - leader) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                leader = leader + step;
+                window.scrollTo(0, leader);
+                if (target === leader) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+    })
+</script>
+<div class="footer">
+    <div class="footer-next">
+        <img src="images-index/footer-first.png" alt=""/>
+        <img src="images-index/footer-second.png" alt=""/>
+        <img src="images-index/footer-last.png" alt=""/>
+    </div>
+</div>
+</body>
+</html>

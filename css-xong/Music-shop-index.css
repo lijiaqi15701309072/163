@@ -1,0 +1,140 @@
+/*Carousel 轮播图部分开始*/
+
+/*Carousel 轮播图部分结束*/
+
+
+
+
+/*integral 积分商城部分开始*/
+.integral{
+    padding: 16px 0;
+    border-bottom: 1px solid #E6E6E6;
+}
+.integral li{
+    float: left;
+}
+.integral-a1,.integral-a2,.integral-a3{
+    position: relative;
+    display: block;
+    width: 272px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    line-height: 40px;
+}
+.integral-a4{
+    position: relative;
+    display: block;
+    width: 272px;
+    height: 48px;
+    text-align: center;
+    line-height: 40px;
+}
+.integral-a4 img{
+    position: absolute;
+    top: -2px;
+    left: 75px;
+}
+.integral-a4 p{
+    position: absolute;
+    right: 95px;
+    top: -5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+.integral-a4 i{
+    position: absolute;
+    right: 107px;
+    top: 13px;
+    color: red;
+}
+.vertical{
+    width: 1px;
+    height: 48px;
+    background-color: #E6E6E6;
+}
+/*integral 轮播图部分开始*/
+
+
+/*welfare 开学福利部分开始*/
+.welfare{
+    margin-top: 39px;
+    height: 300px;
+}
+.welfare-lefe a{
+    display: block;
+    float: left;
+    width: 542px;
+    height: 300px;
+    background: url("../images-xong/nuandong.jpg") no-repeat;
+}
+.welfare-right a{
+    display: block;
+    float: right;
+    width: 542px;
+    height: 300px;
+    background: url("../images-xong/kaixue.jpg") no-repeat;
+}
+/*welfare 开学福利部分开始*/
+
+/*Recommend 编辑推荐部分开始*/
+.recommend{
+    margin-top: 53px;
+}
+.recommend-content{
+    margin-top: 20px;
+}
+.recommend span{
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+.recommend-ul-li1,.recommend-ul-li2,.recommend-ul-li3,.recommend-ul-li4,.recommend-ul-li5,.recommend-ul-li6,.recommend-ul-li7,.recommend-ul-li8,.recommend-ul-li9,.recommend-ul-li10,.recommend-ul-li11,.recommend-ul-li12,.recommend-ul-li13,.recommend-ul-li14,.recommend-ul-li15,.recommend-ul-li16,.recommend-ul-li17,.recommend-ul-li18,.recommend-ul-li19,.recommend-ul-li20,.recommend-ul-li21,.recommend-ul-li22,.recommend-ul-li23,.recommend-ul-li24{
+    float: left;
+    padding-right: 16px;
+    width: 263px;
+    height: 316px;
+    text-align: center;
+}
+.recommend-ul-li1 a,.recommend-ul-li2 a,.recommend-ul-li3 a,.recommend-ul-li4 a,.recommend-ul-li5 a,.recommend-ul-li6 a,.recommend-ul-li7 a,.recommend-ul-li8 a,.recommend-ul-li9 a,.recommend-ul-li10 a,.recommend-ul-li11 a,.recommend-ul-li12 a,.recommend-ul-li13 a,.recommend-ul-li14 a,.recommend-ul-li15 a,.recommend-ul-li16 a,.recommend-ul-li17 a,.recommend-ul-li18 a,.recommend-ul-li19 a,.recommend-ul-li20 a,.recommend-ul-li21 a,.recommend-ul-li22 a,.recommend-ul-li23 a,.recommend-ul-li24 a{
+    display: block;
+    width: 263px;
+    height: 263px;
+    background-color: #F9F9F9;
+}
+.recommend-ul-li1 p,.recommend-ul-li2 p,.recommend-ul-li3 p,.recommend-ul-li4 p,.recommend-ul-li5 p,.recommend-ul-li6 p,.recommend-ul-li7 p,.recommend-ul-li8 p,.recommend-ul-li9 p,.recommend-ul-li10 p,.recommend-ul-li11 p,.recommend-ul-li12 p,.recommend-ul-li13 p,.recommend-ul-li14 p,.recommend-ul-li15 p,.recommend-ul-li16 p,.recommend-ul-li17 p,.recommend-ul-li18 p,.recommend-ul-li19 p,.recommend-ul-li20 p,.recommend-ul-li21 p,.recommend-ul-li22 p,.recommend-ul-li23 p,.recommend-ul-li24 p{
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: normal;
+    color: #333;
+}
+.recommend-ul-li1 i,.recommend-ul-li2 i,.recommend-ul-li3 i,.recommend-ul-li4 i,.recommend-ul-li5 i,.recommend-ul-li6 i,.recommend-ul-li7 i,.recommend-ul-li8 i,.recommend-ul-li9 i,.recommend-ul-li10 i,.recommend-ul-li11 i,.recommend-ul-li12 i,.recommend-ul-li13 i,.recommend-ul-li14 i,.recommend-ul-li15 i,.recommend-ul-li16 i,.recommend-ul-li17 i,.recommend-ul-li18 i,.recommend-ul-li19 i,.recommend-ul-li20 i,.recommend-ul-li21 i,.recommend-ul-li22 i,.recommend-ul-li23 i,.recommend-ul-li24 i{
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    color: red;
+}
+.recommend-ul-li5,.recommend-ul-li6,.recommend-ul-li7,.recommend-ul-li8,.recommend-ul-li9,.recommend-ul-li10,.recommend-ul-li11,.recommend-ul-li12,.recommend-ul-li13,.recommend-ul-li14,.recommend-ul-li15,.recommend-ul-li16,.recommend-ul-li17,.recommend-ul-li18,.recommend-ul-li19,.recommend-ul-li20,.recommend-ul-li21,.recommend-ul-li22,.recommend-ul-li23,.recommend-ul-li24{
+    margin-top: 65px;
+}
+.recommend-ul-li4 i span{
+    font-size: 14px;
+    color: #FE672E;
+}
+.recommend-ul-li5 i span{
+    color: #FE672E;
+    font-size: 14px;
+}
+/*Recommend 编辑推荐部分结束*/
+
+/*number 数字专辑部分开始*/
+.number{
+    margin-top: 75px;
+}
+/*number 数字专辑部分结束*/
+
